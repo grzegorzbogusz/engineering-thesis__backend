@@ -27,6 +27,7 @@ jobs:
     services:
       mysql:
         image: mysql:8
+        container_name: mysql
         env:
           MYSQL_DATABASE: test
           MYSQL_USER: mysql
