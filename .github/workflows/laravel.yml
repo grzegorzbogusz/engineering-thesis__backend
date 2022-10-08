@@ -50,5 +50,7 @@ jobs:
       run: php artisan config:cache
     - name: Wait for MySQL
       run: sleep 15
+    - name: Run migrations
+      run: php artisan migrate:fresh
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
