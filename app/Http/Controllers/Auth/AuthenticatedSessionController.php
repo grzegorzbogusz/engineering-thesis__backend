@@ -18,7 +18,7 @@ class AuthenticatedSessionController extends Controller
 
         return response()->noContent();
     }
-    
+
     public function destroy(Request $request): Response
     {
         Auth::guard('web')->logout();
