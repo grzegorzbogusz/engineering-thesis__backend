@@ -27,7 +27,6 @@ class RegistrationTest extends TestCase
         ]);
 
         Event::assertDispatched(Registered::class);
-        $this->assertAuthenticated();
         $response->assertCreated();
     }
 }
