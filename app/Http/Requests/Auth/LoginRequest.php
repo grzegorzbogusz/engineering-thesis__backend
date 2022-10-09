@@ -39,7 +39,7 @@ class LoginRequest extends FormRequest
         $user = User::whereEmail($email)->first();
 
         if(! $user->hasVerifiedEmail()) {
-            throw new EmailNotVerifiedException;
+            throw new EmailNotVerifiedException();
         };
     }
 }
