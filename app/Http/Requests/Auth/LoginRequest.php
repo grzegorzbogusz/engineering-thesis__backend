@@ -32,14 +32,4 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
-
-    protected function passedValidation(): void
-    {
-        $email = $this->validated('email');
-        $user = User::whereEmail($email)->first();
-
-        if(! $user->hasVerifiedEmail()) {
-            throw new EmailNotVerifiedException();
-        };
-    }
 }
