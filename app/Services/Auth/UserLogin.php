@@ -18,6 +18,8 @@ class UserLogin
             throw new UserNotLoggedInException();
         }
 
+        $user->tokens->first()?->delete();
+        
         return $user->createToken('Bearer Token')->plainTextToken;;
     }
 }
