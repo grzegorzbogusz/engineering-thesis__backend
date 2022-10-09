@@ -18,6 +18,6 @@ class UserLogin
             throw new UserNotLoggedInException();
         }
 
-        return $user->createToken()->plainTextToken;;
+        return $user->createToken('Bearer Token')->plainTextToken;;
     }
 }
