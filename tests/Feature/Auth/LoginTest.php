@@ -21,8 +21,11 @@ class LoginTest extends TestCase
             'password' => 'password',
         ]);
 
-        $this->assertAuthenticated('auth:sanctum');
-        $response->assertNoContent();
+        $response->assertOk();
+        
+        $this->assertTrue(
+            key_exists('Bearer', $response->json())
+        );
     }
 
     public function test_users_can_not_login_with_invalid_password()
@@ -34,6 +37,6 @@ class LoginTest extends TestCase
             'password' => 'wrong-password',
         ]);
 
-        $this->assertGuest();
+        $this->assertGuest('sanctum');
     }
 }
