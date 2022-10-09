@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegisteredUserRequest;
+use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class RegisteredUserController extends Controller
+class RegisterUserController extends Controller
 {
-    public function store(RegisteredUserRequest $request): Response
+    public function store(RegisterUserRequest $request): Response
     {
         $user = User::create([
             'name' => $request->name,
