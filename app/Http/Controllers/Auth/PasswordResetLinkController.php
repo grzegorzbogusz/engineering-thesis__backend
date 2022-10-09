@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 
 class PasswordResetLinkController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
         $status = Password::sendResetLink(
             $request->only('email')

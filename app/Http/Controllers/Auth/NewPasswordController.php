@@ -15,10 +15,10 @@ use Illuminate\Validation\ValidationException;
 
 class NewPasswordController extends Controller
 {
-    public function store(NewPasswordRequest $request): JsonResponse
+    public function __invoke(NewPasswordRequest $request): JsonResponse
     {
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            $request->validated(),
             function ($user) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($request->password),

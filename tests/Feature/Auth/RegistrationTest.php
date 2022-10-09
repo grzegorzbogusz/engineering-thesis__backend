@@ -19,7 +19,7 @@ class RegistrationTest extends TestCase
             Registered::class,
         ]);
 
-        $response = $this->post(route('register'), [
+        $response = $this->postJson(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'password',

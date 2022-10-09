@@ -33,7 +33,7 @@ class EmailVerificationTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->get($verificationUrl);
+        $response = $this->getJson($verificationUrl);
 
         Event::assertDispatched(Verified::class);
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
@@ -56,8 +56,9 @@ class EmailVerificationTest extends TestCase
 
         Sanctum::actingAs($user);
     
-        $this->get($verificationUrl);
+        $response = $this->getJson($verificationUrl);
 
+        $response->assertForbidden();
         $this->assertFalse($user->fresh()->hasVerifiedEmail());
     }
 }

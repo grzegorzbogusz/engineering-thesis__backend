@@ -21,7 +21,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -32,5 +32,5 @@ Route::post('/logout', LogoutController::class)->middleware('auth:sanctum')->nam
 Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['auth:sanctum', 'signed', 'throttle:6,1'])->name('verification.verify');
 Route::post('/email/verification-notification', EmailVerificationNotificationController::class)->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 
-Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
-Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+Route::post('/forgot-password', PasswordResetLinkController::class)->name('password.email');
+Route::post('/reset-password', NewPasswordController::class)->name('password.update');
