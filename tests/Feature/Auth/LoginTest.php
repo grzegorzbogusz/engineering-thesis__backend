@@ -22,7 +22,7 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertOk();
-        
+
         $this->assertTrue(
             key_exists('Bearer', $response->json())
         );

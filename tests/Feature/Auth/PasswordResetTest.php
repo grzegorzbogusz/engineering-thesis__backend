@@ -53,7 +53,7 @@ class PasswordResetTest extends TestCase
                 'password' => 'password123',
                 'password_confirmation' => 'password123',
             ]);
-            
+
             $response->assertOk();
 
             return true;

@@ -55,7 +55,7 @@ class EmailVerificationTest extends TestCase
         );
 
         Sanctum::actingAs($user);
-    
+
         $response = $this->getJson($verificationUrl);
 
         $response->assertForbidden();

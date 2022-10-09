@@ -9,7 +9,6 @@ use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Services\Auth\UserRegistrar;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterUserController extends Controller

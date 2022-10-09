@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Services\Auth;
 
@@ -14,12 +14,13 @@ class UserLogin
     {
         $user = User::whereEmail($validated['email'])->first();
 
-        if(!$user || !Hash::check($validated['password'], $user->password)) {
+        if (!$user || !Hash::check($validated['password'], $user->password)) {
             throw new UserNotLoggedInException();
         }
 
         $user->tokens->first()?->delete();
-        
-        return $user->createToken('Bearer Token')->plainTextToken;;
+
+        return $user->createToken('Bearer Token')->plainTextToken;
+        ;
     }
 }
