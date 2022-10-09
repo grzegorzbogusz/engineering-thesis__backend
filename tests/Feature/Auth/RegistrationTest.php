@@ -19,7 +19,7 @@ class RegistrationTest extends TestCase
             Registered::class,
         ]);
 
-        $response = $this->post('/register', [
+        $response = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'password',
@@ -28,6 +28,6 @@ class RegistrationTest extends TestCase
 
         Event::assertDispatched(Registered::class);
         $this->assertAuthenticated();
-        $response->assertNoContent();
+        $response->assertCreated();
     }
 }
