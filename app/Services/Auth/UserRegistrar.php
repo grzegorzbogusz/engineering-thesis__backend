@@ -10,7 +10,7 @@ use Throwable;
 
 class UserRegistrar
 {
-    public function register(array $validated): User
+    public static function register(array $validated): User
     {
         try {
             $user = User::create($validated);

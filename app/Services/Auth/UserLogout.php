@@ -10,7 +10,7 @@ use Throwable;
 
 class UserLogout
 {
-    public function logout(PersonalAccessToken $token): void
+    public static function logout(PersonalAccessToken $token): void
     {
         try {
             $token->delete();

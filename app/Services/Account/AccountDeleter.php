@@ -10,7 +10,7 @@ use Throwable;
 
 class AccountDeleter
 {
-    public function delete(User $user): void
+    public static function delete(User $user): void
     {
         if($user->isAdmin()) {
             abort(400, 'Admin account can not be deleted');

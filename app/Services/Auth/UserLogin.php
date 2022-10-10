@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserLogin
 {
-    public function logIn(array $validated): string
+    public static function logIn(array $validated): string
     {
         $user = User::whereEmail($validated['email'])->first();
 

@@ -11,11 +11,9 @@ use Illuminate\Http\JsonResponse;
 
 class LoginController extends Controller
 {
-    public function __invoke(LoginRequest $request, UserLogin $service): JsonResponse
+    public function __invoke(LoginRequest $request): JsonResponse
     {
-        $validated = $request->validated();
-
-        $token = $service->logIn($validated);
+        $token = UserLogin::logIn($request->validated());
 
         return response()->json(['Bearer' => $token]);
     }

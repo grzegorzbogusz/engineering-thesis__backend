@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterUserController extends Controller
 {
-    public function __invoke(RegisterUserRequest $request, UserRegistrar $service): JsonResponse
+    public function __invoke(RegisterUserRequest $request): JsonResponse
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
 
-        $user = $service->register($validated);
+        $user = UserRegistrar::register($validated);
 
         event(new Registered($user));
 
