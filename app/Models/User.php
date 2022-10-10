@@ -58,4 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
         
         return parent::delete();
     }
+
+    public function scopeWithoutAdmin($query)
+    {
+        $query->where('is_admin', '!=', 1);
+    }
 }
