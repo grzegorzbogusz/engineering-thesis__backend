@@ -8,15 +8,15 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\Account\AccountDeleter;
 use App\Services\Admin\UsersRetriever;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\JsonResponse;
+use JsonSerializable;
 
 class UserManagementController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(): array|Arrayable|JsonSerializable
     {
-        $users = UsersRetriever::get();
-        
-        return response()->json($users);
+        return UsersRetriever::get();
     }
 
     public function show(User $user): JsonResponse
