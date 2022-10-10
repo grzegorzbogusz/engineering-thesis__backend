@@ -17,7 +17,7 @@ class AccountDeleter
         }
 
         if(! $user->exists) {
-            abort(400, 'Account does not exists');
+            abort(404, 'Account does not exists');
         }
 
         try {
