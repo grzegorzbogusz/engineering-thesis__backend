@@ -44,7 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime:H:i d-m-Y',
+        'created_at' => 'datetime:H:i d-m-Y',
+        'updated_at' => 'datetime:H:i d-m-Y',
     ];
 
     public function isAdmin(): bool
