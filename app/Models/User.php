@@ -51,4 +51,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return (bool) $this->is_admin;
     }
+
+    public function delete(): bool|null
+    {
+        $this->tokens()->delete();
+        
+        return parent::delete();
+    }
 }
