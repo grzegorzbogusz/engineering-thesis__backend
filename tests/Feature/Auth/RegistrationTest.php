@@ -13,7 +13,7 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_new_users_can_register()
+    public function test_new_users_can_register(): void
     {
         Event::fake([
             Registered::class,

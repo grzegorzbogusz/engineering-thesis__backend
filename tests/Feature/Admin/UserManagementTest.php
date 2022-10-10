@@ -13,7 +13,7 @@ class UserManagementTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_admin_can_retrieve_paginated_users()
+    public function test_admin_can_retrieve_paginated_users(): void
     {
         $jsonStructur = [
             'data' => [
@@ -60,7 +60,7 @@ class UserManagementTest extends TestCase
         $response->assertJsonStructure($jsonStructur);
     }
 
-    public function test_user_can_not_retrieve_paginated_users()
+    public function test_user_can_not_retrieve_paginated_users(): void
     {
         Sanctum::actingAs(User::factory()->create());
 
@@ -71,7 +71,7 @@ class UserManagementTest extends TestCase
         $response->assertForbidden();
     }
 
-    public function test_admin_can_retrieve_user_details()
+    public function test_admin_can_retrieve_user_details(): void
     {
         $this->seed();
 
@@ -95,7 +95,7 @@ class UserManagementTest extends TestCase
         ]);
     }
 
-    public function test_user_can_not_retrieve_another_user_details()
+    public function test_user_can_not_retrieve_another_user_details(): void
     {
         Sanctum::actingAs(User::factory()->create());
 
@@ -108,7 +108,7 @@ class UserManagementTest extends TestCase
         $response->assertForbidden();
     }
 
-    public function test_admin_can_delete_user_account()
+    public function test_admin_can_delete_user_account(): void
     {
         $this->seed();
 
@@ -129,7 +129,7 @@ class UserManagementTest extends TestCase
         $this->assertModelMissing($user);
     }
 
-    public function test_admin_account_can_not_be_deleted()
+    public function test_admin_account_can_not_be_deleted(): void
     {
         $this->seed();
 
@@ -144,7 +144,7 @@ class UserManagementTest extends TestCase
         $this->assertModelExists($admin);
     }
 
-    public function test_user_can_not_delete_another_user_account()
+    public function test_user_can_not_delete_another_user_account(): void
     {
         Sanctum::actingAs(User::factory()->create());
 
