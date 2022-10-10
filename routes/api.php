@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\User\DeleteAccountController;
+use App\Http\Controllers\User\UpdatePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,11 @@ Route::post('/email/verification-notification', EmailVerificationNotificationCon
 
 Route::post('/forgot-password', PasswordResetLinkController::class)->name('password.email');
 Route::post('/reset-password', NewPasswordController::class)->name('password.update');
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function() {
+    Route::put('password', UpdatePasswordController::class)->name('change.password');
+    Route::delete('delete', DeleteAccountController::class)->name('delete.account');
+});
 
 Route::middleware(['auth:sanctum', 'verified', 'can:access-admin-panel'])->prefix('admin')->group(function() {
     Route::apiResource('users', UserManagementController::class)->only(['index', 'show', 'destroy']);
