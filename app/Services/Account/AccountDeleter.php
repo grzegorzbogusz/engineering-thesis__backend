@@ -13,7 +13,7 @@ class AccountDeleter
     public static function delete(User $user): void
     {
         if($user->isAdmin()) {
-            abort(400, 'Admin account can not be deleted');
+            abort(422, 'Admin account can not be deleted');
         }
 
         if(! $user->exists) {
