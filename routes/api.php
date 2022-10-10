@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterUserController;
@@ -34,3 +35,7 @@ Route::post('/email/verification-notification', EmailVerificationNotificationCon
 
 Route::post('/forgot-password', PasswordResetLinkController::class)->name('password.email');
 Route::post('/reset-password', NewPasswordController::class)->name('password.update');
+
+Route::middleware(['auth:sanctum', 'verified', 'can:access-admin-panel'])->prefix('admin')->group(function() {
+    Route::apiResource('users', UserManagementController::class)->only(['index', 'show', 'destroy']);
+});
