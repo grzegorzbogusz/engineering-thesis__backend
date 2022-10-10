@@ -35,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'is_admin',
     ];
 
     /**
@@ -43,6 +44,25 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime:H:i d-m-Y',
+        'created_at' => 'datetime:H:i d-m-Y',
+        'updated_at' => 'datetime:H:i d-m-Y',
     ];
+
+    public function isAdmin(): bool
+    {
+        return (bool) $this->is_admin;
+    }
+
+    public function delete(): bool|null
+    {
+        $this->tokens()->delete();
+        
+        return parent::delete();
+    }
+
+    public function scopeWithoutAdmin($query)
+    {
+        $query->where('is_admin', '!=', 1);
+    }
 }

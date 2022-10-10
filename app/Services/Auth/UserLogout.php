@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Services\Auth;
 
@@ -10,7 +10,7 @@ use Throwable;
 
 class UserLogout
 {
-    public function logout(PersonalAccessToken $token): void
+    public static function logout(PersonalAccessToken $token): void
     {
         try {
             $token->delete();

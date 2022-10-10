@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Exceptions\Auth;
+namespace App\Exceptions\Account;
 
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
-class UserNotCreatedException extends HttpResponseException
+class AccountNotDeletedException extends HttpResponseException
 {
     public function __construct()
     {
         parent::__construct(
-            new JsonResponse('User not created.', 500)
+            new JsonResponse(['message' => 'Account not deleted'], 500)
         );
-    }
+    }   
 }

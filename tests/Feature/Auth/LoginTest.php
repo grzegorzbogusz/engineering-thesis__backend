@@ -12,7 +12,7 @@ class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_users_can_login_using_the_login_screen()
+    public function test_users_can_login_using_the_login_screen(): void
     {
         $user = User::factory()->create();
 
@@ -22,13 +22,13 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertOk();
-        
+
         $this->assertTrue(
             key_exists('Bearer', $response->json())
         );
     }
 
-    public function test_users_can_not_login_with_invalid_password()
+    public function test_users_can_not_login_with_invalid_password(): void
     {
         $user = User::factory()->create();
 
@@ -38,6 +38,5 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertUnprocessable();
-        $this->assertGuest();
     }
 }

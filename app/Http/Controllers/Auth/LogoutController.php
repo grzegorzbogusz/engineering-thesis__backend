@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 
 class LogoutController extends Controller
 {
-    public function __invoke(Request $request, UserLogout $service): JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
-        $token = $request->user()->currentAccessToken();
-
-        $service->logout($token);
+        UserLogout::logout(
+            $request->user()->currentAccessToken()
+        );
 
         return new JsonResponse();
     }
