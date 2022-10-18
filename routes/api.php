@@ -32,7 +32,7 @@ Route::post('/register', RegisterUserController::class)->name('register');
 Route::post('/login', LoginController::class)->name('login');
 Route::post('/logout', LogoutController::class)->middleware('auth:sanctum')->name('logout');
 
-Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['auth:sanctum', 'signed', 'throttle:6,1'])->name('verification.verify');
+Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['signed', 'throttle:6,1'])->name('verification.verify');
 Route::post('/email/verification-notification', EmailVerificationNotificationController::class)->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 
 Route::post('/forgot-password', PasswordResetLinkController::class)->name('password.email');
