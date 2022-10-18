@@ -12,7 +12,7 @@ class UserNotCreatedException extends HttpResponseException
     public function __construct()
     {
         parent::__construct(
-            new JsonResponse('User not created.', 500)
+            new JsonResponse(['message' => ['User not created']], 500)
         );
     }
 }

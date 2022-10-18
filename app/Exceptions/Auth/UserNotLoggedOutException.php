@@ -12,7 +12,7 @@ class UserNotLoggedOutException extends HttpResponseException
     public function __construct()
     {
         parent::__construct(
-            new JsonResponse('User not logged out.', 500)
+            new JsonResponse(['message' => ['User not logged out']], 500)
         );
     }
 }

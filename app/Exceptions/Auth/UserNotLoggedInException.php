@@ -12,7 +12,7 @@ class UserNotLoggedInException extends HttpResponseException
     public function __construct()
     {
         parent::__construct(
-            new JsonResponse('Incorrect credentials.', 422)
+            new JsonResponse(['email' => ['Incorrect email or password']], 422)
         );
     }
 }
