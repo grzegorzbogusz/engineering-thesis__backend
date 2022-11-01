@@ -13,10 +13,10 @@ class PasswordUpdater
 {
     public static function update(User $user, string $newPassword): void
     {
-        if(! $user->exists) {
+        if (! $user->exists) {
             abort(404, 'Account does not exists');
         }
-        
+
         try {
             $user->password = Hash::make($newPassword);
             $user->save();

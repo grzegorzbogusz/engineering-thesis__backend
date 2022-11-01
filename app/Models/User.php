@@ -57,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function delete(): bool|null
     {
         $this->tokens()->delete();
-        
+
         return parent::delete();
     }
 
