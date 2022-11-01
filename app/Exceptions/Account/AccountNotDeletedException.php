@@ -14,5 +14,5 @@ class AccountNotDeletedException extends HttpResponseException
         parent::__construct(
             new JsonResponse(['message' => 'Account not deleted'], 500)
         );
-    }   
+    }
 }

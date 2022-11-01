@@ -24,7 +24,7 @@ class UpdatePasswordTest extends TestCase
 
         $user = User::factory()->create();
         Sanctum::actingAs($user);
-        
+
         $this->assertTrue(
             Hash::check($data['old_password'], $user->password)
         );
